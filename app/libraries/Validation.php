@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp\app\libraries;
+
 class Validation 
 {
     private $password;

@@ -1,5 +1,9 @@
 <?php
 
+namespace MyApp\app\controllers;
+
+use MyApp\app\libraries\Controller;
+
 class Pages extends Controller
 {
 

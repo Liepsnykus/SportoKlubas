@@ -1,4 +1,10 @@
 <?php
+
+namespace MyApp\app\libraries;
+
+use MyApp\app\controllers\Pages;
+use MyApp\app\controllers\Users;
+
 /* App Core class
  * Create URL & loads controller
  * URL format /controller/method/params
@@ -31,7 +37,11 @@ class Core
         // instanciate an objec of current class
         // if entered pages
         // Pages = new Pages;
-        $this->currentController = new $this->currentController;
+        if($this->currentController == 'Pages'){
+            $this->currentController = new Pages;
+        } elseif($this->currentController == 'Users') {
+            $this->currentController = new Users;
+        }
 
         // check for second(method) values in url params
         if (isset($url[1])) {

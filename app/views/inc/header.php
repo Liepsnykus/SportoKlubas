@@ -30,7 +30,7 @@
                             </div>
                             <?php if (isLoggedIn()) : ?>
                                 <div class="navbar-nav ml-auto">
-                                    <div class="nav-link"><?php echo $_SESSION['name'] ?></div>
+                                    <div class="nav-link disabled text-white-50"><?php echo $_SESSION['name'] ?></div>
                                     <a class="nav-link" href="<?php echo URLROOT ?>users/logout">Atsijungti</a>
                                 </div>
                             <?php else : ?>

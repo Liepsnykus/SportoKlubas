@@ -1,4 +1,8 @@
 <?php
+namespace MyApp\app\controllers;
+
+use MyApp\app\libraries\Controller;
+use MyApp\app\libraries\Validation;
 
 class Users extends Controller
 {
