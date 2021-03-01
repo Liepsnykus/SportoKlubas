@@ -44,11 +44,33 @@ class User
 
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':email', $data['email']);
-  
+
         $this->db->bind(':password', $data['password']);
 
         if ($this->db->execute()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function login($email, $notHashedPass)
+    {
+
+        $this->db->query("SELECT * FROM users WHERE `email` = :email");
+
+        $this->db->bind(':email', $email);
+
+        $row = $this->db->singleRow();
+
+        if ($row) {
+            $hashedPassword = $row->password;
+        } else {
+            return false;
+        }
+
+        if (password_verify($notHashedPass, $hashedPassword)) {
+            return $row;
         } else {
             return false;
         }

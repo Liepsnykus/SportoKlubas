@@ -2,7 +2,7 @@
 
 class Users extends Controller
 {
-    private $userModel; 
+    private $userModel;
     private $vld;
 
 
@@ -14,7 +14,7 @@ class Users extends Controller
 
     public function index()
     {
-        redirect('pages/posts');
+        redirect('pages/index');
     }
 
     public function register()
@@ -44,9 +44,9 @@ class Users extends Controller
             $data['errors']['passwordRepeatErr'] = $this->vld->confirmPassword($data['passwordRepeat']);
 
 
-      
+
             if ($this->vld->ifEmptyArr($data['errors'])) {
-            
+
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 if ($this->userModel->register($data)) {
@@ -58,7 +58,7 @@ class Users extends Controller
 
                 $data['currentPage'] = 'register';
                 $data['title'] = 'Užsiregistruokite';
-       
+
                 $this->view('users/register', $data);
             }
         } else {
@@ -78,7 +78,70 @@ class Users extends Controller
                 'title' => 'Užsiregistruokite'
             ];
 
+            $this->view('users/register', $data);
+        }
+    }
+
+    public function login()
+    {
+        if ($this->vld->ifRequestIsPostAndSanitize()) {
+
+            $data = [
+                'email'     => trim($_POST['email']),
+                'password'  => trim($_POST['password']),
+                'errors' => [
+                    'emailErr'     => '',
+                    'passwordErr'  => '',
+                ],
+            ];
+
+            $data['errors']['emailErr'] = $this->vld->validateLoginEmail($data['email'], $this->userModel);
+
+            $data['errors']['passwordErr'] = $this->vld->validateEmpty($data['password'], 'Please enter your password');
+
+            if ($this->vld->ifEmptyArr($data['errors'])) {
+
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                if ($loggedInUser) {
+
+                    $this->createUserSession($loggedInUser);
+                    print_r($loggedInUser);
+                } else {
+                    $data['errors']['passwordErr'] = 'Wrong password or email';
+                    $data['currentPage'] = 'login';
+                    $data['title'] = 'Prisijunkite';
+
+                    $this->view('users/login', $data);
+                }
+            } else {
+                $data['currentPage'] = 'login';
+                $data['title'] = 'Prisijunkite';
+
+                $this->view('users/login', $data);
+            }
+        } else {
+
+            $data = [
+                'email'     => '',
+                'password'  => '',
+                'errors' => [
+                    'emailErr'     => '',
+                    'passwordErr'  => '',
+                ]
+            ];
+            $data['currentPage'] = 'login';
+            $data['title'] = 'Prisijunkite';
+
             $this->view('users/login', $data);
         }
+    }
+
+    public function createUserSession($userRow)
+    {
+        $_SESSION['user_id'] = $userRow->id;
+        $_SESSION['user_email'] = $userRow->email;
+        $_SESSION['user_name'] = $userRow->name;
+        redirect('pages/index');
     }
 }

@@ -10,6 +10,30 @@ body {
     width: 800px;
 }
 
+.product1Img {
+    width: 100%;
+    min-height: 40%;
+    background-image: url('../img/Product1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.product2Img {
+    width: 100%;
+    min-height: 40%;
+    background-image: url('../img/Product2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.product3Img {
+    width: 100%;
+    min-height: 40%;
+    background-image: url('../img/Product3.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .container800 {
     max-width: 800px;
     margin: auto;
@@ -31,7 +55,6 @@ body {
 .products {
     height: 400px;
     margin: 20px 0px;
-
 }
 
 .product {
