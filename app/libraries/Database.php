@@ -1,4 +1,10 @@
 <?php
+
+namespace MyApp\app\libraries;
+
+use PDO;
+use PDOException;
+
 /*
     PDO class
     Connect to databse 

@@ -1,4 +1,9 @@
 <?php
+
+namespace MyApp\app\models;
+
+use MyApp\app\libraries\Database;
+
 // User class 
 // for getting and setting database values 
 

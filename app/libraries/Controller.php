@@ -1,4 +1,6 @@
 <?php
+
+namespace MyApp\app\libraries;
 // Base controller
 // Load models and views
 
