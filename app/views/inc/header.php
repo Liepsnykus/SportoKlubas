@@ -15,6 +15,7 @@
 
 <body>
     <header>
+        <?php print_r($_SESSION) ?>
 
         <nav class="navbar navbar-expand-sm  navbar-dark bg-secondary">
             <div class="navContainer mx-auto">
@@ -28,10 +29,17 @@
                             <a class="nav-link <?php echo $data['currentPage'] == 'index' ? 'active' : '' ?>" href="<?php echo URLROOT ?>">Pradinis</a>
                             <a class="nav-link <?php echo $data['currentPage'] == 'comments' ? 'active' : '' ?>" href="<?php echo URLROOT ?>pages/comments">Atsiliepimai</a>
                         </div>
-                        <div class="navbar-nav ml-auto">
-                            <a class="nav-link <?php echo $data['currentPage'] == 'register' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/register">Registruotis</a>
-                            <a class="nav-link <?php echo $data['currentPage'] == 'login' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/login">Prisijungti</a>
-                        </div>
+                        <?php if (isLoggedIn()) : ?>
+                            <div class="navbar-nav ml-auto">
+                                <div class="nav-link"><?php echo $_SESSION['name'] ?></div>
+                                <a class="nav-link" href="<?php echo URLROOT ?>users/logout">Atsijungti</a>
+                            </div>
+                        <?php else : ?>
+                            <div class="navbar-nav ml-auto">
+                                <a class="nav-link <?php echo $data['currentPage'] == 'register' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/register">Registruotis</a>
+                                <a class="nav-link <?php echo $data['currentPage'] == 'login' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/login">Prisijungti</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

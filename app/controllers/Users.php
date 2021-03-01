@@ -139,9 +139,20 @@ class Users extends Controller
 
     public function createUserSession($userRow)
     {
-        $_SESSION['user_id'] = $userRow->id;
-        $_SESSION['user_email'] = $userRow->email;
-        $_SESSION['user_name'] = $userRow->name;
+        $_SESSION['id'] = $userRow->id;
+        $_SESSION['email'] = $userRow->email;
+        $_SESSION['name'] = $userRow->name;
         redirect('pages/index');
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['id']);
+        unset($_SESSION['email']);
+        unset($_SESSION['name']);
+
+        session_destroy();
+
+        redirect('/pages/index');
     }
 }
