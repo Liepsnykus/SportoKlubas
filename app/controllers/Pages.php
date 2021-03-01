@@ -14,9 +14,17 @@ class Pages extends Controller
  
     
         $data = [
-            'title' => 'Welcome to ' . SITENAME,
+            'title' => SITENAME,
+            'currentPage' => 'index'
         ];
 
         $this->view('pages/index', $data);
+    }
+
+    public function comments()
+    {
+        $data = [
+            'title' => 'This is Comments page'
+        ]
     }
 }
