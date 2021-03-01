@@ -29,8 +29,8 @@
                             <a class="nav-link <?php echo $data['currentPage'] == 'comments' ? 'active' : '' ?>" href="<?php echo URLROOT ?>pages/comments">Atsiliepimai</a>
                         </div>
                         <div class="navbar-nav ml-auto">
-                            <a class="nav-link active" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link <?php echo $data['currentPage'] == 'register' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/register">Registruotis</a>
+                            <a class="nav-link <?php echo $data['currentPage'] == 'login' ? 'active' : '' ?>" href="<?php echo URLROOT ?>users/login">Prisijungti</a>
                         </div>
                     </div>
                 </div>
