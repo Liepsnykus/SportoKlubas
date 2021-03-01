@@ -26,7 +26,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link <?php echo $data['currentPage'] == 'index' ? 'active' : '' ?>" href="<?php echo URLROOT ?>">Pradinis</a>
-                            <a class="nav-link <?php echo $data['currentPage'] == 'feetback' ? 'active' : '' ?>" href="<?php echo URLROOT ?>pages/comments">Atsiliepimai</a>
+                            <a class="nav-link <?php echo $data['currentPage'] == 'comments' ? 'active' : '' ?>" href="<?php echo URLROOT ?>pages/comments">Atsiliepimai</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             <a class="nav-link active" href="#">Home</a>

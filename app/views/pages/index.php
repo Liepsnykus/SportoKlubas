@@ -6,17 +6,17 @@
 
 <div class="container800 products d-flex justify-content-around mx-auto">
     <div class="product d-flex flex-column align-items-center">
-        <img src="../img/Product1.jpg" alt="">
+        <img src="./img/Product1.jpg" alt="weight training">
         <h4 class="text-center">Treniruoklių salė</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus tenetur voluptates unde repellat necessitatibus delectus dicta, totam alias! Saepe, asperiores!</p>
     </div>
     <div class="product d-flex flex-column align-items-center">
-        <img src="../img/Product2.jpg" alt="">
+        <img src="./img/Product2.jpg" alt="aerobics training">
         <h4 class="text-center">Aerobika</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nobis neque, sit sapiente ipsum esse doloremque voluptatum cum!</p>
     </div>
     <div class="product d-flex flex-column align-items-center">
-        <img src="../img/Product3.jpg" alt="">
+        <img src="./img/Product3.jpg" alt="swimmer underwater">
         <h4 class="text-center">Baseinas</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae atque iusto magnam harum fuga officiis aliquid unde blanditiis nisi!</p>
     </div>
