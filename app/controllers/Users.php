@@ -32,7 +32,6 @@ class Users extends Controller
                     'passwordErr'  => '',
                     'passwordRepeatErr' => '',
                 ],
-
             ];
 
             $data['errors']['nameErr'] = $this->vld->validateName($data['name']);
@@ -42,8 +41,6 @@ class Users extends Controller
             $data['errors']['passwordErr'] = $this->vld->validatePassword($data['password'], 6, 10);
 
             $data['errors']['passwordRepeatErr'] = $this->vld->confirmPassword($data['passwordRepeat']);
-
-
 
             if ($this->vld->ifEmptyArr($data['errors'])) {
 
@@ -97,7 +94,7 @@ class Users extends Controller
 
             $data['errors']['emailErr'] = $this->vld->validateLoginEmail($data['email'], $this->userModel);
 
-            $data['errors']['passwordErr'] = $this->vld->validateEmpty($data['password'], 'Please enter your password');
+            $data['errors']['passwordErr'] = $this->vld->validateEmpty($data['password'], 'Įveskite slaptažodį');
 
             if ($this->vld->ifEmptyArr($data['errors'])) {
 
@@ -108,7 +105,7 @@ class Users extends Controller
                     $this->createUserSession($loggedInUser);
                     print_r($loggedInUser);
                 } else {
-                    $data['errors']['passwordErr'] = 'Wrong password or email';
+                    $data['errors']['passwordErr'] = 'Neteisingas slaptažodis arba el. paštas';
                     $data['currentPage'] = 'login';
                     $data['title'] = 'Prisijunkite';
 

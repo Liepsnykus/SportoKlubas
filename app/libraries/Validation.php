@@ -43,25 +43,7 @@ class Validation
         }
         return true;
     }
-
-    /**
-     * Validates empty field
-     *
-     * @param array $data
-     * @param string $field
-     * @param string $fieldDisplayName
-     * @return void
-     */
-    public function ifEmptyFieldWithReference(&$data, $field, $fieldDisplayName)
-    {
-        $fieldError = $field . 'Err';
-        // Validate Name 
-        if (empty($data[$field])) {
-            // empty field
-            $data['errors'][$fieldError] = "Please enter Your $fieldDisplayName";
-        }
-    }
-    
+   
     /**
      * Checks if given string is empty returns message if empty.
      *
@@ -82,9 +64,9 @@ class Validation
      */
     public function validateName($field)
     {
-        if (empty($field)) return "Please enter your Name";
+        if (empty($field)) return "Įveskite savo vardą";
 
-        if (!preg_match("/^[a-z ,.'-]+$/i", $field)) return "Name must only contain Name characters";
+        if (!preg_match("/^[a-z ,.'-]+$/i", $field)) return "Vardą turi sudaryti tik raidės";
 
         return ''; 
     }
@@ -97,11 +79,11 @@ class Validation
      */
     public function validateEmail($field, &$userModel)
     {
-        if (empty($field)) return "Please enter Your Email";
+        if (empty($field)) return "Įveskite savo el. paštą";
 
-        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Please check your email";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Pasitiktinkite savo el. paštą";
 
-        if ($userModel->findUserByEmail($field)) return 'Email already taken';
+        if ($userModel->findUserByEmail($field)) return 'El. paštas jau egzistuoja';
 
         return '';
     }
@@ -114,11 +96,11 @@ class Validation
      */
     public function validateLoginEmail($field, &$userModel)
     {
-        if (empty($field)) return "Please enter Your Email";
+        if (empty($field)) return "Įveskite savo el. paštą";
 
-        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Please check your email";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Pasitiktinkite savo el. paštą";
 
-        if (!$userModel->findUserByEmail($field)) return 'Email not found';
+        if (!$userModel->findUserByEmail($field)) return 'Toks el. paštas neegzistuoja';
 
         return '';
     }
@@ -131,21 +113,17 @@ class Validation
      * @param string $field
      * @return string
      */
-    public function validatePassword($passField, $min, $max)
+    public function validatePassword($passField, $min)
     {
-        if (empty($passField)) return "Please enter a password";
+        if (empty($passField)) return "Įveskite slaptažodį";
 
         $this->password = $passField;
 
-        if (strlen($passField) < $min) return "Password must be more than $min characters length";
+        if (strlen($passField) < $min) return "Slaptažodis per trumpas";
 
-        if (strlen($passField) > $max) return "Password must be less than $max characters length";
+        if (!preg_match("#[0-9]+#", $passField)) return "Slaptažodyje turi būti bent vienas skaičius";
 
-        if (!preg_match("#[0-9]+#", $passField)) return "Password must contain at least one number";
-
-        if (!preg_match("#[a-z]+#", $passField)) return "Password must include at least one letter!";
-
-        if (!preg_match("#[A-Z]+#", $passField)) return "Password must include at least one Capital letter!";
+        if (!preg_match("#[a-z]+#", $passField)) return "Slaptažodyje turi būti bent viena raidė";
 
         return '';
     }
@@ -158,11 +136,11 @@ class Validation
      */
     public function confirmPassword($repeatField)
     {
-        if (empty($repeatField)) return "Please repeat a password";
+        if (empty($repeatField)) return "Pakartokite slaptažodį";
 
-        if (!$this->password) return 'no password saved';
+        if (!$this->password) return 'Įveskite slaptažodį';
 
-        if ($repeatField !== $this->password) return "Password must match";
+        if ($repeatField !== $this->password) return "Slaptažodžiai nesutampa";
 
         return '';
     }
