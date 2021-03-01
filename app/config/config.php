@@ -9,10 +9,10 @@ define('DB_NAME', 'sportoKlubas');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL ROOT will be the path in the url
-define('URLROOT', 'http://localhost/SportoKlubas');
+define('URLROOT', 'http://localhost/SportoKlubas/');
 
 // Site name 
-define('SITENAME', 'Sportuok');
+define('SITENAME', 'SPORTUOK');
 
 
 // need to change .htaccess in public

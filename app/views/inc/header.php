@@ -14,3 +14,27 @@
 </head>
 
 <body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm  navbar-dark bg-secondary">
+            <div class="navContainer mx-auto">
+                <div class="d-flex justify-content-between">
+                    <a class="navbar-brand" href="<?php echo URLROOT ?>"><?php echo SITENAME ?></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link <?php echo $data['currentPage'] == 'index' ? 'active' : '' ?>" href="<?php echo URLROOT ?>">Pradinis</a>
+                            <a class="nav-link <?php echo $data['currentPage'] == 'comments' ? 'active' : '' ?>" href="<?php echo URLROOT ?>pages/comments">Atsiliepimai</a>
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="#">Features</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
