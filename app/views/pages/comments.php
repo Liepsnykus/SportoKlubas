@@ -16,26 +16,26 @@
             </div>
             <button type="submit" class="btn btn-primary">Paskelbti</button>
         </form>
-        <?php else: ?>
+    <?php else : ?>
 
         <h2>Norite palikti komentarą?</h2>
         <a href="<?php echo URLROOT ?>users/login" class="btn btn-primary">Prisijunkite</a>
 
-        <?php endif?>
+    <?php endif ?>
 
 </div>
 
 <script>
     const commentText = document.getElementById('text')
     const commentsContainer = document.getElementById('commentsContainer')
-    
-    <?php if(isset($_SESSION['id'])): ?>
-    const commentForm = document.getElementById('commentForm')
-    commentForm.addEventListener('submit', postComment)
+
+    <?php if (isset($_SESSION['id'])) : ?>
+        const commentForm = document.getElementById('commentForm')
+        commentForm.addEventListener('submit', postComment)
     <?php endif ?>
 
     function postComment(event) {
- 
+
         event.preventDefault()
 
         const commentFormData = new FormData(commentForm)
@@ -47,7 +47,7 @@
                 body: commentFormData
             }).then(resp => resp.json())
             .then(data => {
-                console.log(data);
+  
                 if (data.success) {
                     commentText.value = '';
 
@@ -72,10 +72,9 @@
         fetch("<?php echo URLROOT . '/API/getComments' ?>")
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
 
                 data.comments.map(item => {
-                    console.log(item);
+
                     let comments = `
                 <div class="commentContainer my-2">
                     <div class="d-flex justify-content-between">
