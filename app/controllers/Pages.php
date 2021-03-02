@@ -28,7 +28,7 @@ class Pages extends Controller
     public function comments()
     {
         $data = [
-            'title' => 'This is Comments page',
+            'title' => 'Atsiliepimai:',
             'currentPage' => 'comments'
         ];
         $this->view('pages/comments', $data);

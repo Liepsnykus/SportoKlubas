@@ -1,8 +1,10 @@
 <?php
+
 namespace MyApp\app\controllers;
 
 use MyApp\app\libraries\Controller;
 use MyApp\app\libraries\Validation;
+use MyApp\app\models\User;
 
 class Users extends Controller
 {
@@ -12,7 +14,7 @@ class Users extends Controller
 
     public function __construct()
     {
-        $this->userModel = $this->model('User');
+        $this->userModel = new User;
         $this->vld = new Validation;
     }
 
@@ -27,12 +29,18 @@ class Users extends Controller
 
             $data = [
                 'name'      => trim($_POST['name']),
+                'lastname' => trim($_POST['lastname']),
                 'email'     => trim($_POST['email']),
+                'phone' => trim($_POST['phone']),
+                'adress' => trim($_POST['adress']),
                 'password'  => trim($_POST['password']),
                 'passwordRepeat' => trim($_POST['passwordRepeat']),
                 'errors' => [
                     'nameErr'      => '',
+                    'lastnameErr' => '',
                     'emailErr'     => '',
+                    'phoneErr' => '',
+                    'adressErr' => '',
                     'passwordErr'  => '',
                     'passwordRepeatErr' => '',
                 ],
@@ -40,7 +48,11 @@ class Users extends Controller
 
             $data['errors']['nameErr'] = $this->vld->validateName($data['name']);
 
+            $data['errors']['lastnameErr'] = $this->vld->validateLastname($data['lastname']);
+
             $data['errors']['emailErr'] = $this->vld->validateEmail($data['email'], $this->userModel);
+
+            $data['errors']['phoneErr'] = $this->vld->validatePhone($data['phone']);
 
             $data['errors']['passwordErr'] = $this->vld->validatePassword($data['password'], 6, 10);
 
@@ -66,12 +78,18 @@ class Users extends Controller
 
             $data = [
                 'name'      => '',
+                'lastname' => '',
                 'email'     => '',
+                'phone' => '',
+                'adress' => '',
                 'password'  => '',
                 'passwordRepeat' => '',
                 'errors' => [
                     'nameErr'      => '',
+                    'lastnameErr' => '',
                     'emailErr'     => '',
+                    'phoneErr' => '',
+                    'adressErr' => '',
                     'passwordErr'  => '',
                     'passwordRepeatErr' => '',
                 ],

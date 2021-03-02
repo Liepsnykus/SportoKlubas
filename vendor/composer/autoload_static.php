@@ -22,12 +22,14 @@ class ComposerStaticInite978fd1cc1414a6239a17ac79bb1c2de
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'MyApp\\app\\controllers\\API' => __DIR__ . '/../..' . '/app/controllers/API.php',
         'MyApp\\app\\controllers\\Pages' => __DIR__ . '/../..' . '/app/controllers/Pages.php',
         'MyApp\\app\\controllers\\Users' => __DIR__ . '/../..' . '/app/controllers/Users.php',
         'MyApp\\app\\libraries\\Controller' => __DIR__ . '/../..' . '/app/libraries/Controller.php',
         'MyApp\\app\\libraries\\Core' => __DIR__ . '/../..' . '/app/libraries/Core.php',
         'MyApp\\app\\libraries\\Database' => __DIR__ . '/../..' . '/app/libraries/Database.php',
         'MyApp\\app\\libraries\\Validation' => __DIR__ . '/../..' . '/app/libraries/Validation.php',
+        'MyApp\\app\\models\\Comment' => __DIR__ . '/../..' . '/app/models/Comment.php',
         'MyApp\\app\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 

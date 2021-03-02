@@ -8,7 +8,3 @@ session_start();
 
 require_once '../vendor/autoload.php';
 
-// // load libraries automatically
-// spl_autoload_register(function ($className) {
-//     require_once "libraries/$className.php";
-// });
