@@ -2,10 +2,10 @@
 
 namespace MyApp\app\libraries;
 
-class Validation 
+class Validation
 {
     private $password;
-    
+
     /**
      * Check if request method is POST
      *
@@ -35,7 +35,7 @@ class Validation
         }
         return false;
     }
-    
+
     public function ifEmptyArr($arr)
     {
         foreach ($arr as $errorValue) {
@@ -45,7 +45,7 @@ class Validation
         }
         return true;
     }
-   
+
     /**
      * Checks if given string is empty returns message if empty.
      *
@@ -56,6 +56,11 @@ class Validation
     public function validateEmpty($field, $msg)
     {
         return empty($field) ? $msg : '';
+    }
+
+    public function validateLength($field, $msg)
+    {
+        return strlen($field) > 500 ? $msg : '';
     }
 
     /**
@@ -70,10 +75,30 @@ class Validation
 
         if (!preg_match("/^[a-z ,.'-]+$/i", $field)) return "Vardą turi sudaryti tik raidės";
 
-        return ''; 
+        if (strlen($field) > 40) return "Vardas per ilgas";
+
+        return '';
     }
 
-     /**
+    /**
+     * if field is empty we return message, else we return empty string
+     *
+     * @param string $field
+     * @return string
+     */
+    public function validateLastname($field)
+    {
+
+        if (empty($field)) return "Įveskite savo pavardę";
+
+        if (!preg_match("/^[a-z ,.'-]+$/i", $field)) return "Pavardę turi sudaryti tik raidės";
+
+        if (strlen($field) > 40) return "Pavardį per ilga";
+        
+        return '';
+    }
+
+    /**
      * if field is empty we return message, else we return empty string
      *
      * @param string $field
@@ -90,7 +115,20 @@ class Validation
         return '';
     }
 
-     /**
+    /**
+     * if phone number invalid we return message, else we return empty string
+     *
+     * @param string $field
+     * @return string
+     */
+    public function validatePhone($field)
+    {
+        if (!preg_match("/^[0-9\-]|[\+0-9]|[0-9\s]|[0-9()]*$/", $field)) return "Neteisingas telefono numeris";
+
+        return '';
+    }
+
+    /**
      * if field is empty we return message, else we return empty string
      *
      * @param string $field
@@ -107,7 +145,7 @@ class Validation
         return '';
     }
 
-     /**
+    /**
      * checks if field is not empty and if password 
      * matches params for strength we return message, 
      * else we return string with error
@@ -130,7 +168,7 @@ class Validation
         return '';
     }
 
-     /**
+    /**
      * if field is empty we return message, else we return empty string
      *
      * @param string $field

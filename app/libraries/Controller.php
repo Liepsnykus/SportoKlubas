@@ -1,25 +1,13 @@
 <?php
 
 namespace MyApp\app\libraries;
+
 // Base controller
-// Load models and views
+// Load views
 
 class Controller
 {
-    // Load model 
-    public function model($model)
-    {
-        if (file_exists('../app/models/' . $model . '.php')) {
-            // require model file
-            require_once '../app/models/' . $model . '.php';
-
-            //Make object of that class
-            return new $model();
-        } else {
-            die('model does not exist');
-        }
-    }
-
+    
     // Load View
     public function view($view, $data = [])
     {

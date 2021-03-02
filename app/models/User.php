@@ -45,11 +45,13 @@ class User
      */
     public function register($data)
     {
-        $this->db->query("INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password)");
+        $this->db->query("INSERT INTO users (`name`, `lastname`, `email`, `phone`, `adress`, `password`) VALUES (:name, :lastname, :email, :phone, :adress, :password)");
 
         $this->db->bind(':name', $data['name']);
+        $this->db->bind(':lastname', $data['lastname']);
         $this->db->bind(':email', $data['email']);
-
+        $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':adress', $data['adress']);
         $this->db->bind(':password', $data['password']);
 
         if ($this->db->execute()) {

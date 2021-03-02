@@ -2,6 +2,7 @@
 
 namespace MyApp\app\libraries;
 
+use MyApp\app\controllers\API;
 use MyApp\app\controllers\Pages;
 use MyApp\app\controllers\Users;
 
@@ -32,7 +33,7 @@ class Core
             }
         }
         // Require the controller that user asked
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        //require_once '../app/controllers/' . $this->currentController . '.php';
 
         // instanciate an objec of current class
         // if entered pages
@@ -41,6 +42,8 @@ class Core
             $this->currentController = new Pages;
         } elseif($this->currentController == 'Users') {
             $this->currentController = new Users;
+        } elseif($this->currentController == 'API') {
+            $this->currentController = new API;
         }
 
         // check for second(method) values in url params
